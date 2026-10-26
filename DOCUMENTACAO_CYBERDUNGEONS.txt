@@ -1,0 +1,228 @@
+DOCUMENTAÇÃO DO PROJETO CYBERDUNGEONS
+====================================
+
+1. O QUE É ESTE PROJETO
+------------------------
+Este projeto é um jogo em Python do tipo RPG, onde o jogador entra numa aventura medieval chamada Cyberdungeons.
+A personagem é enviada para o ano 1272 e precisa de atravessar várias masmorras, combater inimigos, comprar itens na loja e tentar recuperar uma máquina do tempo.
+
+2. OBJETIVO DO JOGO
+-------------------
+O objetivo principal é sobreviver, derrotar os inimigos das masmorras e chegar até à última masmorra para recuperar o núcleo temporal.
+
+3. ESTRUTURA DO PROJETO
+-----------------------
+Os ficheiros principais são:
+
+- Jogo.py
+  Contém a lógica principal do jogo, como o menu, os combates, as masmorras e a loja.
+
+- Jogador.py
+  Contém a classe Jogador, com as características do personagem, inventário, moedas e equipamento.
+
+- Inimigo.py
+  Contém a classe Inimigo, com a vida, ataque, defesa e recompensas dos adversários.
+
+- Masmorra.py
+  Contém a classe Masmorra, com o nome, descrição e os caminhos possíveis entre masmorras.
+
+- Loja.py
+  Contém a loja onde o jogador pode comprar armas, armaduras, poções e consumíveis.
+
+- Arma.py
+  Define uma arma que pode ser comprada e equipada.
+
+- Armadura.py
+  Define uma armadura que aumenta a defesa do jogador.
+
+- Pocao.py
+  Define uma poção que recupera vida.
+
+- ConsumivelCombate.py
+  Define um item de combate que causa dano aleatório.
+
+- Cyberdungeons.py
+  É o ficheiro principal que inicia o jogo.
+
+4. COMO FUNCIONA O JOGO
+-----------------------
+O jogo começa com uma introdução e pede o nome da personagem.
+Depois, o jogador entra num ciclo de menu onde pode:
+- ver o estado do jogador
+- explorar uma masmorra
+- visitar a loja
+- descansar
+- sair do jogo
+
+5. EXPLICAÇÃO DAS CLASSES
+-------------------------
+
+5.1 Classe Jogo
+A classe Jogo controla o fluxo principal do jogo.
+Ela é responsável por:
+- iniciar o jogo
+- mostrar o menu principal
+- criar o jogador
+- criar as masmorras
+- criar os inimigos
+- iniciar os combates
+- gerir a vitória ou derrota
+- permitir a escolha de caminhos
+
+Métodos principais:
+- iniciarJogo(): inicia o jogo e controla o ciclo principal.
+- mostrarIntroducao(): mostra a história inicial.
+- criarJogador(): cria o personagem com estatísticas iniciais.
+- mostrarMenuPrincipal(): mostra as opções do menu.
+- criarMasmorraAtual(): cria a masmorra atual com os seus caminhos.
+- criarInimigoDaMasmorra(): cria o inimigo correspondente à masmorra atual.
+- explorarMasmorra(): inicia a exploração da masmorra atual.
+- iniciarCombate(): controla o combate.
+- processarVitoria(): trata a vitória do combate.
+- processarDerrota(): trata a derrota do jogador.
+- escolherCaminhoAposVitoria(): permite escolher para qual masmorra seguir.
+- visitarLoja(): entra na loja.
+- descansar(): recupera vida e dá um momento de descanso.
+
+5.2 Classe Jogador
+A classe Jogador representa o personagem controlado pelo utilizador.
+Guarda informação como:
+- nome
+- vida e vida máxima
+- ataque
+- defesa
+- nível
+- experiência
+- moedas
+- arma equipada
+- armadura equipada
+- inventário de poções
+- inventário de consumíveis de combate
+
+Métodos principais:
+- receberDano(): reduz a vida quando o jogador é atacado.
+- atacar(): causa dano ao inimigo.
+- curar(): recupera vida.
+- ganharExperiencia(): aumenta experiência e pode subir de nível.
+- subirNivel(): aumenta as estatísticas quando o jogador sobe de nível.
+- ganharMoedas(): adiciona moedas.
+- gastarMoedas(): remove moedas ao comprar itens.
+- equiparArma(): equipa uma arma.
+- equiparArmadura(): equipa uma armadura.
+- guardarPocao(): guarda uma poção no inventário.
+- adicionarConsumivelCombate(): guarda um consumível de combate.
+- usarPocao(): usa uma poção e recupera vida.
+- usarConsumivelCombate(): usa um consumível e causa dano.
+- mostrarEstado(): mostra todas as estatísticas do jogador.
+- mostrarEstadoResumido(): mostra um resumo rápido do estado.
+
+5.3 Classe Inimigo
+A classe Inimigo representa os adversários do jogo.
+Guarda:
+- nome
+- vida
+- ataque
+- defesa
+- experiência que dá ao jogador ao vencer
+- moedas que dá ao jogador ao vencer
+
+Métodos principais:
+- receberDano(): reduz a vida do inimigo.
+- atacar(): ataca o jogador.
+- estaVivo(): verifica se o inimigo ainda está vivo.
+- mostrarEstado(): mostra os dados do inimigo.
+
+5.4 Classe Masmorra
+A classe Masmorra guarda a informação de cada área do jogo.
+Contém:
+- número da masmorra
+- nome
+- descrição
+- caminhos disponíveis para outras masmorras
+
+Métodos principais:
+- mostrarInformacao(): mostra os detalhes da masmorra.
+- mostrarCaminhosDisponiveis(): mostra para onde o jogador pode ir.
+
+5.5 Classe Loja
+A classe Loja cria e gere os produtos que aparecem para o jogador comprar.
+Ela pode mostrar armas, armaduras, poções e consumíveis.
+
+Métodos principais:
+- gerarProdutos(): cria os produtos de acordo com a masmorra atual.
+- mostrarProdutos(): mostra os itens em venda.
+- _tipoProduto(): identifica se o item é arma, armadura, poção ou consumível.
+- comprarProduto(): processa a compra e atualiza o jogador.
+
+6. EXPLICAÇÃO DOS ITENS
+-----------------------
+
+6.1 Arma
+Uma arma dá um bónus de ataque ao jogador.
+Pode ser equipada para aumentar o dano causado aos inimigos.
+
+6.2 Armadura
+Uma armadura dá um bónus de defesa ao jogador.
+Ajuda a reduzir o dano recebido dos inimigos.
+
+6.3 Poção
+Uma poção recupera vida.
+É útil quando o jogador está ferido após um combate.
+
+6.4 Consumível de combate
+É um item que causa dano aleatório ao inimigo.
+Ajuda a ganhar vantagem em combate.
+
+7. EXPLICAÇÃO DE CONCEITOS IMPORTANTES
+-------------------------------------
+
+7.1 Atributos privados
+Em Python, atributos como self.__nome são privados.
+Significa que só devem ser usados dentro da classe.
+Para aceder ou modificar esses valores, normalmente usam-se os métodos get e set.
+
+7.2 Getters e setters
+- get: serve para ler um valor
+- set: serve para alterar um valor
+
+Exemplo:
+- getNome() devolve o nome
+- setNome("Maria") muda o nome
+
+7.3 Def
+def é usado para criar funções e métodos.
+Cada função faz uma tarefa específica e pode ser chamada quando necessário.
+
+7.4 Enumere e índices
+- enumerate permite percorrer uma lista e saber a posição de cada elemento
+- o índice representa a posição do item
+- isso é usado na loja para mostrar produtos com números para o jogador escolher
+
+7.5 Isinstance
+isinstance verifica o tipo de um objeto.
+Por exemplo, permite saber se um produto é uma Arma, uma Armadura, uma Poção ou um ConsumivelCombate.
+
+8. FLUXO DE JOGO EM RESUMO
+--------------------------
+1. O jogo começa com a introdução.
+2. O jogador escolhe um nome.
+3. O jogo cria o jogador.
+4. O jogador entra no menu principal.
+5. Pode explorar masmorras, visitar a loja ou descansar.
+6. Em cada masmorra, aparece um inimigo.
+7. O jogador combate o inimigo.
+8. Se ganhar, pode avançar para outra masmorra.
+9. Se perder, o jogo termina.
+10. O objetivo final é chegar à última masmorra e recuperar o núcleo temporal.
+
+9. RESUMO FINAL
+--------------
+Este projeto é um jogo de RPG simples, mas com várias classes e mecanismos importantes.
+Cada classe tem uma função específica:
+- Jogo controla a aventura
+- Jogador representa o personagem
+- Inimigo representa os adversários
+- Masmorra organiza os locais do jogo
+- Loja fornece itens para melhorar o jogador
+
+Este tipo de estrutura ajuda a organizar o código e torna o programa mais claro e mais fácil de expandir.
